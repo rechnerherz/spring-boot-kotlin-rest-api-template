@@ -3,12 +3,19 @@ package at.rechnerherz.example.domain.base
 import at.rechnerherz.example.domain.account.Account
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.vladmihalcea.hibernate.type.json.JsonStringType
 import org.hibernate.Hibernate
+import org.hibernate.annotations.TypeDef
+import org.hibernate.annotations.TypeDefs
 import org.hibernate.proxy.HibernateProxy
+import org.jadira.usertype.moneyandcurrency.moneta.PersistentCurrencyUnit
+import org.jadira.usertype.moneyandcurrency.moneta.PersistentMoneyAmountAndCurrency
+import org.javamoney.moneta.Money
 import org.springframework.data.annotation.*
 import org.springframework.data.annotation.AccessType
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.Instant
+import javax.money.CurrencyUnit
 import javax.persistence.*
 import javax.persistence.Version
 import kotlin.reflect.KClass
@@ -23,11 +30,11 @@ import kotlin.reflect.KProperty1
  */
 @MappedSuperclass
 @EntityListeners(value = [AuditingEntityListener::class])
-//@TypeDefs(
-//    TypeDef(name = "Money", typeClass = PersistentMoneyAmountAndCurrency::class, defaultForType = Money::class),
-//    TypeDef(name = "CurrencyUnit", typeClass = PersistentCurrencyUnit::class, defaultForType = CurrencyUnit::class),
-//    TypeDef(name = "JSON", typeClass = JsonStringType::class)
-//)
+@TypeDefs(
+    TypeDef(name = "Money", typeClass = PersistentMoneyAmountAndCurrency::class, defaultForType = Money::class),
+    TypeDef(name = "CurrencyUnit", typeClass = PersistentCurrencyUnit::class, defaultForType = CurrencyUnit::class),
+    TypeDef(name = "JSON", typeClass = JsonStringType::class)
+)
 abstract class BaseEntity : EqualsHashCodeAndToString() {
 
     companion object {

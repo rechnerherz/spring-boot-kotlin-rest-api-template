@@ -127,18 +127,18 @@ dependencies {
 	// https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser
 	implementation("org.springframework.data:spring-data-rest-hal-browser")
 
-//	// JSR-354/JavaMoney/Moneta money and currency implementation
-//	// http://javamoney.github.io/api.html
-//	// http://javamoney.github.io/ri.html
-//	implementation("org.javamoney:moneta:1.3")
+	// JSR-354/JavaMoney/Moneta money and currency implementation
+	// http://javamoney.github.io/api.html
+	// http://javamoney.github.io/ri.html
+	implementation("org.javamoney:moneta:1.3")
 
-//	// Jadira Hibernate UserTypes for money and currency
-//	// http://jadira.sourceforge.net/usertype-userguide.html
-//	implementation("org.jadira.usertype:usertype.core:7.0.0.CR1")
+	// Jadira Hibernate UserTypes for money and currency
+	// http://jadira.sourceforge.net/usertype-userguide.html
+	implementation("org.jadira.usertype:usertype.core:7.0.0.CR1")
 
-//	// Hibernate Types for JSON column mappings
-//	// https://github.com/vladmihalcea/hibernate-types
-//	implementation("com.vladmihalcea:hibernate-types-52:2.9.2")
+	// Hibernate Types for JSON column mappings
+	// https://github.com/vladmihalcea/hibernate-types
+	implementation("com.vladmihalcea:hibernate-types-52:2.9.2")
 
 	// Liquibase for database migrations
 	// http://www.liquibase.org/
@@ -153,13 +153,13 @@ dependencies {
 	// https://github.com/FasterXML/jackson-datatype-hibernate
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-hibernate5")
 
-//	// Jackson module to serialize/deserialize of JavaMoney classes
-//	// https://github.com/zalando/jackson-datatype-money
-//	implementation("org.zalando:jackson-datatype-money:1.1.1")
+	// Jackson module to serialize/deserialize of JavaMoney classes
+	// https://github.com/zalando/jackson-datatype-money
+	implementation("org.zalando:jackson-datatype-money:1.1.1")
 
-//	// Jackson data format module for reading and writing CSV
-//	// https://github.com/FasterXML/jackson-dataformats-text
-//	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv")
+	// Jackson data format module for reading and writing CSV
+	// https://github.com/FasterXML/jackson-dataformats-text
+	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv")
 
 	// Jackson data format module for reading and writing XML
 	// https://github.com/FasterXML/jackson-dataformat-xml
@@ -204,26 +204,6 @@ dependencies {
 	// Flying Saucer HTML renderer (using OpenPDF)
 	// https://github.com/flyingsaucerproject/flyingsaucer
 	implementation("org.xhtmlrenderer:flying-saucer-pdf-openpdf:9.1.16")
-
-//	// zt-zip for extracting ZIP archives
-//	// https://github.com/zeroturnaround/zt-zip
-//	implementation("org.zeroturnaround:zt-zip:1.13")
-
-//	// Spring Web Services
-//	// https://docs.spring.io/spring-ws/site/reference/html/what-is-spring-ws.html
-//	implementation("org.springframework.ws:spring-ws-core")
-//
-//	// JAXB Runtime (necessary for JDK 11)
-//	// https://github.com/javaee/jaxb-v2
-//	// https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-Java-9-and-above#jaxb
-//	implementation("org.glassfish.jaxb:jaxb-runtime")
-//
-//	// SOAP API (necessary for JDK 11)
-//	// https://github.com/javaee/javax.xml.soap
-//	implementation("javax.xml.soap:javax.xml.soap-api:1.4.0")
-//
-//	// SAAJ Messaging (necessary for JDK 11)
-//	implementation("com.sun.xml.messaging.saaj:saaj-impl:1.5.0")
 
 	// TwelveMonkeys ImageIO extensions
 	// https://github.com/haraldk/TwelveMonkeys
