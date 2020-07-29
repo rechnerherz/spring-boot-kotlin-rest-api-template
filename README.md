@@ -37,7 +37,6 @@
   - Logging with kotlin-logging
   - Logback appender to send mails (send mails for all errors)
   - Logback appender to send Slack messages
-  - Logback appender to send logs to Sentry (TODO)
   - Application listeners to log application events and handled HTTP requests
   - AOP profiling of all Spring bean methods calls (logging and exucation time measurement)
 
@@ -57,14 +56,13 @@
   - Path-based request restrictions (e.g /public paths are public, /api requires authentication)
   - Annotations to restrict endpoints to certain roles
   - CSP reports
-  - Optional: completely stateless without HTTP session using a JWT "session" token instead (TODO)
 
 - File handling:
   - Thymleaf templates (not used for MVC views, only to generate mails and PDFs in the backend)
   - Flying Saucer HTML to PDF renderer
   - TwelveMonkeys ImageIO extensions to support more image formats
   - Thumbnailator to generate image thumbnails
-  - Store files on the filesystem or on S3 (TODO)
+  - Store files on the filesystem or on S3
 
 - Exception handling with application/problem+json support
 - A service to generate sitemap.xml and robots.txt
@@ -85,7 +83,6 @@
 - docker-compose files for development and testing:
   - `local`: MariaDB and MailDev
   - `testing`: MariaDB (in a tmpfs) and MailDev for integration testing
-  - `development`: full stack (TODO)
 
 ## Setup
 

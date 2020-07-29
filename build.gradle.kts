@@ -210,6 +210,15 @@ dependencies {
 	implementation("com.twelvemonkeys.servlet:servlet:3.5")
 	implementation("com.twelvemonkeys.imageio:imageio-jpeg:3.5")
 
+	// Spring Cloud AWS
+	// https://cloud.spring.io/spring-cloud-aws/spring-cloud-aws.html
+	implementation("org.springframework.cloud:spring-cloud-aws-context:2.2.1.RELEASE")
+
+	// AWS SDK
+	// https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-project-gradle.html
+	implementation(platform("software.amazon.awssdk:bom:2.5.29"))
+	implementation("software.amazon.awssdk:ses")
+
 	// --- Annotation processors ---
 
 	// Spring Annotation Processor

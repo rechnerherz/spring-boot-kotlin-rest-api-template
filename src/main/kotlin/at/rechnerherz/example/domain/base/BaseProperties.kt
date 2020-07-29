@@ -59,8 +59,8 @@ class BaseProperties {
     /** When set to true the application will exit after startup. */
     var exitAfterStartup: Boolean = false
 
-    /** The directory to store all files. Must start with `file:` and end with a `/`.*/
-    @Pattern(regexp = "file:.*/")
+    /** The directory to store all files. Must start with `file:` or `s3://` and end with a `/`.*/
+    @Pattern(regexp = "(file:|s3://).*/")
     var directory: String = ""
 
 }

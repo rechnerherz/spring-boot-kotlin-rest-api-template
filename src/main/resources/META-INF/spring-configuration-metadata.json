@@ -1,6 +1,16 @@
 {
   "groups": [
     {
+      "name": "at.rechnerherz.example.aws.s3",
+      "type": "at.rechnerherz.example.external.aws.S3Properties",
+      "sourceType": "at.rechnerherz.example.external.aws.S3Properties"
+    },
+    {
+      "name": "at.rechnerherz.example.aws.ses",
+      "type": "at.rechnerherz.example.external.aws.SESProperties",
+      "sourceType": "at.rechnerherz.example.external.aws.SESProperties"
+    },
+    {
       "name": "at.rechnerherz.example.base",
       "type": "at.rechnerherz.example.domain.base.BaseProperties",
       "sourceType": "at.rechnerherz.example.domain.base.BaseProperties"
@@ -55,6 +65,41 @@
     }
   ],
   "properties": [
+    {
+      "name": "at.rechnerherz.example.aws.s3.bucket-name",
+      "type": "java.lang.String",
+      "description": "S3 bucket name.",
+      "sourceType": "at.rechnerherz.example.external.aws.S3Properties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.aws.s3.region-name",
+      "type": "java.lang.String",
+      "description": "Region name.",
+      "sourceType": "at.rechnerherz.example.external.aws.S3Properties",
+      "defaultValue": "eu-central-1"
+    },
+    {
+      "name": "at.rechnerherz.example.aws.s3.test-on-startup",
+      "type": "java.lang.Boolean",
+      "description": "Whether to do a test read\/write on S3 on startup.",
+      "sourceType": "at.rechnerherz.example.external.aws.S3Properties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.aws.ses.region-name",
+      "type": "java.lang.String",
+      "description": "Region name.",
+      "sourceType": "at.rechnerherz.example.external.aws.SESProperties",
+      "defaultValue": "eu-west-1"
+    },
+    {
+      "name": "at.rechnerherz.example.aws.ses.test-on-startup",
+      "type": "java.lang.Boolean",
+      "description": "Whether to test connection on startup.",
+      "sourceType": "at.rechnerherz.example.external.aws.SESProperties",
+      "defaultValue": false
+    },
     {
       "name": "at.rechnerherz.example.base.backend-url",
       "type": "java.lang.String",
