@@ -5,12 +5,13 @@ const val ROOT_URL = "/"
 const val API_URL = "/api"
 
 const val PUBLIC_URL = "/public"
-const val STATIC_URL = "/public/static"
-const val CSP_REPORT_URL = "/public/csp-report"
+const val STATIC_URL = "$PUBLIC_URL/static"
+const val CSP_REPORT_URL = "$PUBLIC_URL/csp-report"
+const val DOCUMENTS_URL = "$PUBLIC_URL/documents"
 
-const val LOGIN_URL = "/public/login"
-const val LOGOUT_URL = "/public/logout"
-const val AUTHENTICATED_ACCOUNT_URL = "/public/account"
+const val LOGIN_URL = "$PUBLIC_URL/login"
+const val LOGOUT_URL = "$PUBLIC_URL/logout"
+const val AUTHENTICATED_ACCOUNT_URL = "$PUBLIC_URL/account"
 
 const val FAVICON = "/favicon.ico"
 const val SITEMAP = "/sitemap.xml"

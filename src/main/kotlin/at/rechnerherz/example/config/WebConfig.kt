@@ -1,30 +1,46 @@
 package at.rechnerherz.example.config
 
+import at.rechnerherz.example.config.web.ImagePathResourceResolver
 import at.rechnerherz.example.domain.base.BaseProperties
+import at.rechnerherz.example.domain.document.DocumentProperties
 import at.rechnerherz.example.util.appendPath
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.CacheControl
 import org.springframework.web.filter.ForwardedHeaderFilter
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.i18n.CookieLocaleResolver
 import org.springframework.web.servlet.resource.PathResourceResolver
+import java.util.concurrent.TimeUnit
 
 /**
  * Spring Web configuration.
  */
 @Configuration
 class WebConfig(
-    private val baseProperties: BaseProperties
+    private val baseProperties: BaseProperties,
+    private val documentProperties: DocumentProperties
 ) : WebMvcConfigurer {
 
     /**
-     * Add resource handlers to serve static resources under the [STATIC_URL] (sitemap.xml, robots.txt).
+     * Add resource handlers to serve
+     *
+     * - documents from the public documents subdirectory as static resources under the [DOCUMENTS_URL]
+     * - static resources under the [STATIC_URL] (sitemap.xml, robots.txt)
      *
      * Note: Directory resource locations must end with '/'.
      */
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        registry
+            .addResourceHandler(anySubPath(DOCUMENTS_URL))
+            .addResourceLocations(baseProperties.directory.appendPath(DOCUMENTS_DIRECTORY))
+            .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
+            .resourceChain(true)
+            .addResolver(ImagePathResourceResolver(
+                documentProperties.extraImageSizes.keys.map { ".$it" }
+            ))
         registry
             .addResourceHandler(anySubPath(STATIC_URL))
             .addResourceLocations(baseProperties.directory.appendPath(STATIC_DIRECTORY))

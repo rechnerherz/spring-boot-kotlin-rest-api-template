@@ -130,7 +130,7 @@
     {
       "name": "at.rechnerherz.example.base.directory",
       "type": "java.lang.String",
-      "description": "The directory to store all files. Must start with `file:` and end with a `\/`.",
+      "description": "The directory to store all files. Must start with `file:` or `s3:\/\/` and end with a `\/`.",
       "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
       "defaultValue": ""
     },
