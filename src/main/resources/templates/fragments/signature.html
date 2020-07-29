@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<!--/*@thymesVar id="integration" type="at.rechnerherz.example.domain.integration.Integration"*/-->
-
-<th:block th:fragment="signature (integration)">
+<th:block th:fragment="signature">
     <th:block th:text="#{signature}"/>
     <br/><br/>
-    <th:block th:text="#{signature.team(${integration.name})}"/>
+    <th:block th:text="#{signature.team('example')}"/>
     <br/><br/>
-
-    <div style="font-size: small; color: darkgray;">
-        <p>
-            <th:block th:text="${integration.owner.companyData.name}"/>
-            <br/>
-            <th:block th:text="${integration.owner.address.fullAddress}"/>
-            <br/>
-            <th:block th:unless="${#strings.isEmpty(integration.owner.phone)}">
-                <th:block th:text="#{contactData.phone}"/>
-                <th:block th:text="${integration.owner.phone}"/>
-                <br/>
-            </th:block>
-            <th:block th:unless="${#strings.isEmpty(integration.owner.email)}">
-                <th:block th:text="#{contactData.email}"/>
-                <a th:href="'mailto:' + ${integration.owner.email}">
-                    <th:block th:text="${integration.owner.email}"/>
-                </a>
-            </th:block>
-        </p>
-    </div>
 </th:block>
 
 </html>
