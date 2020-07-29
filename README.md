@@ -78,7 +78,7 @@
   - Locally trusted SSL certificate with mkcert
 
 - Testing with JUnit5
-  - Integration testing in an identical docker environment with full Spring application context and the DB in tmpsfs
+  - Integration testing in an identical docker environment with full Spring application context and the DB in tmpfs
   - Unit testing without Spring application context
   - Functional test data (can be used for development test data and in unit and integration tests)
 
