@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Logback SMTP appender to be included in logback-spring.xml -->
+
+<included>
+
+    <springProperty name="spring.mail.host"
+                    source="spring.mail.host"/>
+    <springProperty name="spring.mail.port"
+                    source="spring.mail.port"/>
+    <springProperty name="spring.mail.username"
+                    source="spring.mail.username"/>
+    <springProperty name="spring.mail.password"
+                    source="spring.mail.password"/>
+
+    <springProperty name="at.rechnerherz.example.logback.mail.enabled"
+                    source="at.rechnerherz.example.logback.mail.enabled"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.level"
+                    source="at.rechnerherz.example.logback.mail.level"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.from-address"
+                    source="at.rechnerherz.example.logback.mail.from-address"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.from-personal"
+                    source="at.rechnerherz.example.logback.mail.from-personal"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.to-address"
+                    source="at.rechnerherz.example.logback.mail.to-address"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.to-personal"
+                    source="at.rechnerherz.example.logback.mail.to-personal"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.ignore"
+                    source="at.rechnerherz.example.logback.mail.ignore"/>
+    <springProperty name="at.rechnerherz.example.logback.mail.enforce"
+                    source="at.rechnerherz.example.logback.mail.enforce"/>
+
+    <conversionRule conversionWord="mdcln"
+                    converterClass="at.rechnerherz.example.config.logback.MDCMultilineConverter"/>
+    <conversionRule conversionWord="subject"
+                    converterClass="at.rechnerherz.example.config.logback.MessageSubjectConverter"/>
+
+    <!-- SMTPAppender -->
+    <!-- https://logback.qos.ch/manual/appenders.html#SMTPAppender -->
+    <appender name="SMTP" class="ch.qos.logback.classic.net.SMTPAppender">
+
+        <smtpHost>${spring.mail.host}</smtpHost>
+        <smtpPort>${spring.mail.port}</smtpPort>
+        <username>${spring.mail.username}</username>
+        <password>${spring.mail.password}</password>
+
+        <from>${at.rechnerherz.example.logback.mail.from-personal} &lt;${at.rechnerherz.example.logback.mail.from-address}&gt;</from>
+        <to>${at.rechnerherz.example.logback.mail.to-personal} &lt;${at.rechnerherz.example.logback.mail.to-address}&gt;</to>
+
+        <!-- Extract the subject with MessageSubjectConverter -->
+        <subject>%subject</subject>
+
+        <!-- Use a PatternLayout with a pattern similar to FILE_LOG_PATTERN including a dump of the MDC -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n%n%mdcln%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+        </layout>
+
+        <!-- Don't buffer mails, send a mail for each log event -->
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <bufferSize>1</bufferSize>
+        </cyclicBufferTracker>
+
+        <!-- Don't send a mail for loggers included in the at.rechnerherz.example.logback.mail.ignore property -->
+        <!-- Send a mail for loggers included in the at.rechnerherz.example.logback.mail.enforce property -->
+        <!-- Don't send a mail for events with marker NO_MAIL -->
+        <!-- Send a mail for events with marker SEND_MAIL -->
+        <!-- Send a mail for events with level >= ERROR -->
+        <!-- https://logback.qos.ch/manual/filters.html#JaninoEventEvaluator -->
+        <evaluator class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+            <expression>
+                for (String ignore : "${at.rechnerherz.example.logback.mail.ignore}".split(","))
+                    if (logger.startsWith(ignore))
+                        return false;
+
+                for (String enforce : "${at.rechnerherz.example.logback.mail.enforce}".split(","))
+                    if (logger.startsWith(enforce))
+                        return true;
+
+                if (marker != null &amp;&amp; marker.contains("NO_MAIL"))
+                    return false;
+
+                else if (marker != null &amp;&amp; marker.contains("SEND_MAIL"))
+                    return true;
+
+                else if (level >= ${at.rechnerherz.example.logback.mail.level})
+                    return true;
+
+                else
+                    return false;
+            </expression>
+        </evaluator>
+
+    </appender>
+
+    <root>
+        <!-- Only enable if at.rechnerherz.example.logback.mail.enabled is true -->
+        <if condition='property("at.rechnerherz.example.logback.mail.enabled").equals("true")'>
+            <then>
+                <appender-ref ref="SMTP"/>
+            </then>
+        </if>
+    </root>
+
+</included>

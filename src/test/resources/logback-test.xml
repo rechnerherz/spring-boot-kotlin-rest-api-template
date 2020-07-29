@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Logback test config
+https://logback.qos.ch/manual/configuration.html
+
+The logback-test.xml will be used instead of logback-spring.xml for running tests.
+-->
+
+<!-- set debug="true" to see debugging output -->
+<!--<configuration debug="true">-->
+<configuration>
+
+    <!-- Include Spring Boot base config -->
+    <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- Root log level -->
+    <root level="WARN"/>
+
+</configuration>

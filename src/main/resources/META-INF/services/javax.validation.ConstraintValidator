@@ -1,0 +1,5 @@
+at.rechnerherz.example.config.validation.SafeHtmlValidator
+at.rechnerherz.example.config.validation.ValidCronPatternValidator
+at.rechnerherz.example.config.validation.ValidLocaleValidator
+at.rechnerherz.example.config.validation.ValidTimeZoneIDValidator
+at.rechnerherz.example.config.validation.ValidRegexValidator

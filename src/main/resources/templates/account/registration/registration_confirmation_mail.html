@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="#temporals" type="org.thymeleaf.extras.java8time.expression.Temporals"*/-->
+<!--/*@thymesVar id="receiver" type="at.rechnerherz.example.domain.account.Account"*/-->
+<!--/*@thymesVar id="registrationConfirmationURL" type="String"*/-->
+
+<head>
+    <title th:text="#{account.registration.registration_confirmation_mail.title}"/>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+
+<th:block th:replace="/templates/fragments/salutation.html :: salutation(contactData=${receiver.contactData})"/>
+<br/><br/>
+
+<th:block th:text="#{account.registration.registration_confirmation_mail.text}"/>
+<br/><br/>
+
+<th:block th:replace="/templates/fragments/button.html :: button(
+    href=${registrationConfirmationURL},
+    text=#{account.registration.registration_confirmation_mail.button},
+    color='#0a71ba')"/>
+<br/><br/>
+
+<th:block th:replace="/templates/fragments/signature.html :: signature"/>
+
+</body>
+</html>

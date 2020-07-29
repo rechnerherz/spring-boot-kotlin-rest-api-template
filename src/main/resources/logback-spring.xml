@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Logback config
+https://logback.qos.ch/manual/configuration.html
+
+The logback-spring.xml works just like the logback.xml, except:
+
+* Spring Boot extensions springProperty and springProfile can be used
+* configuration scan is not supported
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-logging.html#boot-features-logback-extensions
+-->
+
+<!-- Set debug="true" to see debugging output -->
+<!--<configuration debug="true">-->
+<configuration>
+
+    <!-- Include Spring Boot base config -->
+    <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- Include SMTP appender -->
+    <include resource="logback-smtp-appender.xml"/>
+
+    <!-- Include Slack appender -->
+    <include resource="logback-slack-appender.xml"/>
+
+    <!-- Root log level -->
+    <root level="WARN"/>
+
+</configuration>

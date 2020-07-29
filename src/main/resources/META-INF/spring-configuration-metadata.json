@@ -1,0 +1,413 @@
+{
+  "groups": [
+    {
+      "name": "at.rechnerherz.example.base",
+      "type": "at.rechnerherz.example.domain.base.BaseProperties",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.base.scheduled",
+      "type": "at.rechnerherz.example.scheduled.ScheduledProperties",
+      "sourceType": "at.rechnerherz.example.scheduled.ScheduledProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.document",
+      "type": "at.rechnerherz.example.domain.document.DocumentProperties",
+      "sourceType": "at.rechnerherz.example.domain.document.DocumentProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.logback",
+      "type": "at.rechnerherz.example.config.logback.LogbackProperties",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail",
+      "type": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties",
+      "sourceMethod": "getMail()"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.sentry",
+      "type": "at.rechnerherz.example.config.logback.LogbackProperties$Sentry",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties",
+      "sourceMethod": "getSentry()"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack",
+      "type": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties",
+      "sourceMethod": "getSlack()"
+    },
+    {
+      "name": "at.rechnerherz.example.login",
+      "type": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.mail",
+      "type": "at.rechnerherz.example.mail.MailProperties",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.profiling",
+      "type": "at.rechnerherz.example.config.aop.ProfilingProperties",
+      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "at.rechnerherz.example.base.backend-url",
+      "type": "java.lang.String",
+      "description": "The backend base URL.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.cors-allowed-origins",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Allowed CORS origins.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.base.default-user-locale",
+      "type": "java.lang.String",
+      "description": "The BCP 47 language tag (e.g. en-US) for the default locale to use when the user doesn't not specify one in the locale cookie.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.default-user-time-zone",
+      "type": "java.lang.String",
+      "description": "The default time zone ID to use when the user doesn't not specify one in the locale cookie.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.directory",
+      "type": "java.lang.String",
+      "description": "The directory to store all files. Must start with `file:` and end with a `\/`.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.exit-after-startup",
+      "type": "java.lang.Boolean",
+      "description": "When set to true the application will exit after startup.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.base.frontend-url",
+      "type": "java.lang.String",
+      "description": "The frontend base URL.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.locale-cookie-max-age",
+      "type": "java.lang.Integer",
+      "description": "The max-age of the locale cookie (default is 2^31 - 1 = 2147483647 = 2038-01-19 04:14:07).",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": 2147483647
+    },
+    {
+      "name": "at.rechnerherz.example.base.locale-cookie-name",
+      "type": "java.lang.String",
+      "description": "The name of the locale cookie.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.base.populate-test-data",
+      "type": "java.lang.Boolean",
+      "description": "Whether to create test data on startup.",
+      "sourceType": "at.rechnerherz.example.domain.base.BaseProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.base.scheduled.pending-booking-mail-delay",
+      "type": "java.lang.Long",
+      "sourceType": "at.rechnerherz.example.scheduled.ScheduledProperties",
+      "defaultValue": -1
+    },
+    {
+      "name": "at.rechnerherz.example.base.scheduled.watchdog-cron",
+      "type": "java.lang.String",
+      "description": "A cron string that determines when to run watchdog services.",
+      "sourceType": "at.rechnerherz.example.scheduled.ScheduledProperties",
+      "defaultValue": "-"
+    },
+    {
+      "name": "at.rechnerherz.example.document.extra-image-sizes",
+      "type": "java.util.Map<java.lang.String,java.lang.Integer>",
+      "description": "Map of suffices to sizes for extra images size to generate.",
+      "sourceType": "at.rechnerherz.example.domain.document.DocumentProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.document.max-image-size",
+      "type": "java.lang.Integer",
+      "description": "The maximum size in pixels for uploaded images in either dimension.",
+      "sourceType": "at.rechnerherz.example.domain.document.DocumentProperties",
+      "defaultValue": 2048
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable sending mails via logback.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.enforce",
+      "type": "java.lang.String",
+      "description": "A comma-separated list of loggers to send mails for log statements of any level.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.from-address",
+      "type": "java.lang.String",
+      "description": "The sender mail address to use for logback mails.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.from-personal",
+      "type": "java.lang.String",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.ignore",
+      "type": "java.lang.String",
+      "description": "A comma-separated list of loggers to ignore when sending mails.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.level",
+      "type": "ch.qos.logback.classic.Level",
+      "description": "Send mails for log statements of this level or higher.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.to-address",
+      "type": "java.lang.String",
+      "description": "The receiver mail address to use for logback mails.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.mail.to-personal",
+      "type": "java.lang.String",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Mail",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.sentry.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable sending sentry events via logback.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Sentry",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.logback.sentry.enforce",
+      "type": "java.lang.String",
+      "description": "A comma-separated list of loggers to send sentry events for log statements of any level.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Sentry",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.sentry.ignore",
+      "type": "java.lang.String",
+      "description": "A comma-separated list of loggers to ignore when sending sentry events.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Sentry",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.sentry.level",
+      "type": "ch.qos.logback.classic.Level",
+      "description": "Send sentry events for log statements of this level or higher.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Sentry"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack.channel",
+      "type": "java.lang.String",
+      "description": "The Slack channel to post to.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "defaultValue": "#general"
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable posting to Slack via logback.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack.icon",
+      "type": "java.lang.String",
+      "description": "The icon to use for the Slack message (optional).",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack.username",
+      "type": "java.lang.String",
+      "description": "The username to use for the Slack message. If not set, the hostname will be used instead.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.logback.slack.webhook",
+      "type": "java.lang.String",
+      "description": "The Slack incoming webhook URL.",
+      "sourceType": "at.rechnerherz.example.config.logback.LogbackProperties$Slack",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.login.expiry",
+      "type": "java.lang.Long",
+      "description": "The expiration time for failed login attempts.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "defaultValue": 1
+    },
+    {
+      "name": "at.rechnerherz.example.login.expiry-unit",
+      "type": "java.util.concurrent.TimeUnit",
+      "description": "The expiration time unit for failed login attempts.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.login.ip-block",
+      "type": "java.lang.Integer",
+      "description": "Max number of failed login attempts before the IP is blocked.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "defaultValue": 11
+    },
+    {
+      "name": "at.rechnerherz.example.login.ip-warn",
+      "type": "java.lang.Integer",
+      "description": "Number of failed login attempts per IP to start notifying.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "defaultValue": 10
+    },
+    {
+      "name": "at.rechnerherz.example.login.username-block",
+      "type": "java.lang.Integer",
+      "description": "Max number of failed login attempts before the IP is blocked.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "defaultValue": 11
+    },
+    {
+      "name": "at.rechnerherz.example.login.username-warn",
+      "type": "java.lang.Integer",
+      "description": "Number of failed login attempts per IP and username to start notifying.",
+      "sourceType": "at.rechnerherz.example.config.auth.LoginAttemptProperties",
+      "defaultValue": 10
+    },
+    {
+      "name": "at.rechnerherz.example.mail.debug-address",
+      "type": "java.lang.String",
+      "description": "An email address used for debugging.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.mail.debug-bcc",
+      "type": "java.lang.Boolean",
+      "description": "Send all mails to the debug address as BCC.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.mail.debug-mode",
+      "type": "java.lang.Boolean",
+      "description": "Send all mails to the debug address instead of the real receivers.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.mail.debug-personal",
+      "type": "java.lang.String",
+      "description": "Personal identifier for debug email address.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.mail.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable sending mails with the MailService.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "at.rechnerherz.example.mail.from-address",
+      "type": "java.lang.String",
+      "description": "An email address used for sending notifications.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.mail.from-personal",
+      "type": "java.lang.String",
+      "description": "Personal identifier for from email address.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.mail.log-body",
+      "type": "java.lang.Boolean",
+      "description": "Include the mail body in the log.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "at.rechnerherz.example.mail.max-retries",
+      "type": "java.lang.Integer",
+      "description": "Maximum number of retries for connection errors.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties",
+      "defaultValue": 3
+    },
+    {
+      "name": "at.rechnerherz.example.mail.retry-delay",
+      "type": "java.time.Duration",
+      "description": "Time to wait before retrying after a connection error.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.mail.send-delay",
+      "type": "java.time.Duration",
+      "description": "Time to wait between sending mails.",
+      "sourceType": "at.rechnerherz.example.mail.MailProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.profiling.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Set to true to enable method tracing.",
+      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "at.rechnerherz.example.profiling.ignore",
+      "type": "java.lang.String",
+      "description": "A comma-separated list of target.method names to ignore.",
+      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "at.rechnerherz.example.profiling.mode",
+      "type": "at.rechnerherz.example.config.aop.ProfilingProperties$Mode",
+      "description": "The display mode. TREE adds line drawings to the call tree, VERBOSE prints to multiple lines.",
+      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties"
+    },
+    {
+      "name": "at.rechnerherz.example.profiling.truncate",
+      "type": "java.lang.Integer",
+      "description": "Strings will be truncated to at most this number of characters, unless mode is VERBOSE.",
+      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
+      "defaultValue": 100
+    }
+  ],
+  "hints": []
+}

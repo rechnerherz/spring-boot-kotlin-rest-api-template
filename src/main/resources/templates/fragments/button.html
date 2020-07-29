@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Email button -->
+<!-- Based on https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
+<div th:fragment="button (href, text, color)">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="center" style="border-radius: 3px;" th:bgcolor="${color}">
+                            <a th:href="${href}"
+                               th:text="${text}"
+                               style="font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 8px 12px; border: 1px solid; display: inline-block;"
+                               th:styleappend="|border-color: ${color}|"
+                               target="_blank">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

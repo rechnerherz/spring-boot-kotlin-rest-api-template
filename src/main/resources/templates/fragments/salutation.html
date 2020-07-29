@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--/*@thymesVar id="contactData" type="at.rechnerherz.example.domain.contact.ContactData"*/-->
+
+<th:block th:fragment="salutation (contactData)" th:with="isEmpty = ${contactData == null || #strings.isEmpty(contactData.fullName)}">
+    <th:block th:unless="${isEmpty}" th:switch="${contactData.gender != null ? contactData.gender.name() : 'null'}">
+        <th:block th:case="'FEMALE'" th:text="#{salutation.female(${contactData.fullName})}"/>
+        <th:block th:case="'MALE'" th:text="#{salutation.male(${contactData.fullName})}"/>
+        <th:block th:case="*" th:text="#{salutation.other(${contactData.fullName})}"/>
+    </th:block>
+
+    <th:block th:if="${isEmpty}" th:text="#{salutation}"/>
+</th:block>
+
+</body>
+</html>

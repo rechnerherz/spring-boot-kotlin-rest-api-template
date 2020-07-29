@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  portainer:
+    image: portainer/portainer:1.23.2
+    container_name: "mao-portainer"
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock --no-auth
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:

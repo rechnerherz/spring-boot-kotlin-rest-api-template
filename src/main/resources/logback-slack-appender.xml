@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Logback Slack appender to be included in logback-spring.xml -->
+
+<included>
+
+    <springProperty name="at.rechnerherz.example.logback.slack.enabled"
+                    source="at.rechnerherz.example.logback.slack.enabled"/>
+    <springProperty name="at.rechnerherz.example.logback.slack.webhook"
+                    source="at.rechnerherz.example.logback.slack.webhook"/>
+    <springProperty name="at.rechnerherz.example.logback.slack.channel"
+                    source="at.rechnerherz.example.logback.slack.channel"/>
+    <springProperty name="at.rechnerherz.example.logback.slack.username"
+                    source="at.rechnerherz.example.logback.slack.username"/>
+    <springProperty name="at.rechnerherz.example.logback.slack.icon"
+                    source="at.rechnerherz.example.logback.slack.icon"/>
+
+    <appender name="SLACK" class="at.rechnerherz.example.config.logback.SlackAppender">
+
+        <webhookURL>${at.rechnerherz.example.logback.slack.webhook}</webhookURL>
+        <channel>${at.rechnerherz.example.logback.slack.channel}</channel>
+        <username>${at.rechnerherz.example.logback.slack.username:-${HOSTNAME}}</username>
+        <icon>${at.rechnerherz.example.logback.slack.icon}</icon>
+
+        <!-- Post to Slack when an event contains marker POST_TO_SLACK -->
+        <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+            <marker>POST_TO_SLACK</marker>
+        </evaluator>
+    </appender>
+
+    <root>
+        <!-- Only enable if at.rechnerherz.example.slack.enabled is true -->
+        <if condition='property("at.rechnerherz.example.logback.slack.enabled").equals("true")'>
+            <then>
+                <appender-ref ref="SLACK"/>
+            </then>
+        </if>
+    </root>
+
+</included>

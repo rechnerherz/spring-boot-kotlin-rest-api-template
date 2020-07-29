@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+
+  mariadb:
+    container_name: example-local-mariadb
+    image: mariadb:10.5
+    environment:
+      MYSQL_LOG_CONSOLE: 1
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
+      MYSQL_DATABASE: example
+    ports:
+      - "3306:3306"
+    command:
+      # Set charset and collation to utf8mb4 and utf8mb4_unicode_ci, ignore the client charset
+      # https://mariadb.com/kb/en/library/server-system-variables/#character_set_server
+      # https://mariadb.com/kb/en/library/server-system-variables/#collation_server
+      # https://mariadb.com/kb/en/library/server-system-variables/#character_set_client
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  maildev:
+    container_name: example-local-maildev
+    image: djfarrelly/maildev
+    ports:
+     - "3080:80"
+     - "3025:25"
+
+volumes:
+  mysql_data:
