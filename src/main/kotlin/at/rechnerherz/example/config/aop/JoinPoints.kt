@@ -7,8 +7,8 @@ import org.aspectj.lang.reflect.MethodSignature
 import org.springframework.aop.framework.Advised
 import org.springframework.boot.ApplicationArguments
 import org.springframework.web.multipart.MultipartFile
-import javax.servlet.ServletRequest
-import javax.servlet.ServletResponse
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 import kotlin.coroutines.Continuation
 
 fun JoinPoint.targetAndMethodName(): String =
@@ -84,8 +84,8 @@ fun cleanToString(
         is ApplicationArguments -> any.sourceArgs.joinToString()
         is MultipartFile -> any.cleanToString()
         is Continuation<*> -> "[coroutine]"
-        is ServletRequest -> any.cleanToString()
-        is ServletResponse -> any.cleanToString()
+        is HttpServletRequest -> any.cleanToString()
+        is HttpServletResponse -> any.cleanToString()
         else -> any.toString()
     }
     return if (prettyPrint)
@@ -138,9 +138,14 @@ private fun MultipartFile.cleanToString(): String =
         .add("name", name)
         .toString()
 
-private fun ServletRequest.cleanToString(): String =
-    "$scheme-Request"
+private fun HttpServletRequest.cleanToString(): String =
+    MoreObjects
+        .toStringHelper(this)
+        .add("method", method)
+        .add("requestURI", requestURI)
+        .toString()
 
-private fun ServletResponse.cleanToString(): String =
-    "Response($contentType)"
-
+private fun HttpServletResponse.cleanToString(): String =
+    MoreObjects.toStringHelper(this)
+        .add("status", status)
+        .toString()
