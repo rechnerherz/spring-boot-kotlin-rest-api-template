@@ -6,7 +6,7 @@
 // https://plugins.gradle.org/
 plugins {
 
-	val kotlinVersion = "1.3.72"
+	val kotlinVersion = "1.4.0"
 
 	// Kotlin JVM plugin
 	// https://kotlinlang.org/docs/reference/using-gradle.html
