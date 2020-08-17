@@ -147,7 +147,7 @@ dependencies {
 	// Liquibase for database migrations
 	// http://www.liquibase.org/
 	// https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-execute-liquibase-database-migrations-on-startup
-	implementation("org.liquibase:liquibase-core")
+	implementation("org.liquibase:liquibase-core:3.10.2")
 
 	// Jackson module to serialize/deserialize Kotlin classes
 	// https://github.com/FasterXML/jackson-module-kotlin
@@ -236,7 +236,7 @@ dependencies {
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 
 	// Liquibase
-	liquibaseRuntime("org.liquibase:liquibase-core")
+	liquibaseRuntime("org.liquibase:liquibase-core:3.10.2")
 	liquibaseRuntime("org.mariadb.jdbc:mariadb-java-client")
 	liquibaseRuntime("ch.qos.logback:logback-classic")
 
