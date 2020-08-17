@@ -110,6 +110,10 @@ The `bootRun` task depends on the `localComposeUp` task, which starts two Docker
 - MariaDB listening on `localhost:3306`
 - MailDev SMTP on port `localhost:3025`, with web interface on `http://localhost:3080/`.
 
+To re-build without running tests:
+
+  - `./gradlew clean build --exclude-task test`
+
 ## Test
 
 Run tests with:
