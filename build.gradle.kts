@@ -45,7 +45,7 @@ plugins {
 
 	// Spring Boot plugin to run and package the application
 	// https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/
-	id("org.springframework.boot") version "2.3.1.RELEASE"
+	id("org.springframework.boot") version "2.3.3.RELEASE"
 
 	// gradle-git-properties plugin to generate git.properties (generateGitProperties task)
 	// https://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-git-info
