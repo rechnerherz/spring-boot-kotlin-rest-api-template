@@ -329,13 +329,6 @@ tasks.compileKotlin {
 	// Must depend on processResources to pick up additional metadata files
 	// https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
 	dependsOn(tasks.processResources)
-
-	// Move the generated metadata file to src/main/resources/META-INF
-	doLast {
-		file("src/main/resources/META-INF").mkdirs()
-		file("build/tmp/kapt3/classes/main/META-INF/spring-configuration-metadata.json")
-				.renameTo(file("src/main/resources/META-INF/spring-configuration-metadata.json"))
-	}
 }
 
 // Set options for all Kotlin compilation tasks
