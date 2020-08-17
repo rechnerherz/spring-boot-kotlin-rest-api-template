@@ -125,9 +125,11 @@ The `test` task depends on the `testingComposeUp` task, which starts two Docker 
 - MariaDB listening on `localhost:4306`
 - MailDev SMTP on port `localhost:4025`
 
-## AsciiDocs
+## Documentation
 
-Run `./gradlew asciidoctor` to generate docs (in `build/asciidoc`).
+Run `./gradlew asciidoctor` to generate docs from `.adoc` files (in `build/asciidoc`).
+
+Run `./gradlew dokkaHtml` to generate JavaDoc/KDoc docs (in `./build/dokka/html/mp-api/index.html`).
 
 ## Profiles
 
