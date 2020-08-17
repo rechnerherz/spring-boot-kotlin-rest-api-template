@@ -3,8 +3,8 @@ package at.rechnerherz.example.thymeleaf
 import at.rechnerherz.example.config.aop.NoProfiling
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
-import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
+import org.thymeleaf.spring5.SpringTemplateEngine
 import org.thymeleaf.spring5.expression.ThymeleafEvaluationContext
 import java.util.*
 
@@ -15,8 +15,8 @@ import java.util.*
  */
 @Service
 class ThymeleafService(
-    private val templateEngine: TemplateEngine,
-    private val applicationContext: ApplicationContext
+        private val springTemplateEngine: SpringTemplateEngine,
+        private val applicationContext: ApplicationContext
 ) {
 
     @NoProfiling
@@ -32,6 +32,6 @@ class ThymeleafService(
         // Set additional variables
         variables.forEach { (key, value) -> context.setVariable(key, value) }
 
-        return templateEngine.process(template, context)
+        return springTemplateEngine.process(template, context)
     }
 }
