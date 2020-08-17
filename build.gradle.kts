@@ -393,20 +393,6 @@ dockerCompose {
 	}
 }
 
-// Create a task to drop and re-create DB schemas as a replacement for dropAll
-// With Liquibase 3.8+ and MariaDB 10.3+ dropAll doesn't work
-// https://liquibase.jira.com/browse/CORE-3457
-tasks.create<Exec>("dropCreateSchemas") {
-	commandLine(
-			"mysql",
-			"--protocol=TCP",
-			"--user=root",
-			"--password=root",
-			"--database=information_schema",
-			"--execute=;DROP SCHEMA IF EXISTS `example`;CREATE SCHEMA `example`;"
-	)
-}
-
 tasks.bootRun {
 
 	// Pass properties from command line to bootRun task
