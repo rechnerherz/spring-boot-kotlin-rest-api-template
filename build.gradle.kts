@@ -396,6 +396,10 @@ tasks.bootRun {
 			.filter { it.key != "java.endorsed.dirs" }
 			.forEach { (key, value) -> systemProperties[key.toString()] = value }
 
+	// Completely disable the Spring Boot RestartClassLoader
+	// https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-restart-disable
+	systemProperties["spring.devtools.restart.enabled"] = "false"
+
 	// Enable flying-saucer logging over SLF4J bridge
 	// https://flyingsaucerproject.github.io/flyingsaucer/r8/guide/users-guide-R8.html#xil_49
 	// https://stackoverflow.com/questions/9729147/turning-on-flying-saucer-java-util-logging-output
