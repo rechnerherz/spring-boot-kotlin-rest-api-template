@@ -281,6 +281,12 @@ dependencies {
 
 // --- Build ---
 
+// Always download Gradle sources and documentation (distribution type all)
+// https://docs.gradle.org/current/userguide/gradle_wrapper.html#customizing_wrapper
+tasks.named<Wrapper>("wrapper") {
+	distributionType = Wrapper.DistributionType.ALL
+}
+
 fun gitDescribe(): String {
 	// Set currentDir to project.rootDir to locate .git directory
 	// https://github.com/ajoberstar/grgit/issues/269
