@@ -131,7 +131,7 @@ The `test` task depends on the `testingComposeUp` task, which starts two Docker 
 
 ## Documentation
 
-Run `./gradlew asciidoctor` to generate docs from `.adoc` files (in `build/asciidoc`).
+Run `./gradlew asciidoctor` to generate docs from `.adoc` files (in `./build/asciidoc`).
 
 Run `./gradlew dokkaHtml` to generate JavaDoc/KDoc docs (in `./build/dokka/html/mp-api/index.html`).
 
