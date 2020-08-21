@@ -1,6 +1,6 @@
 package at.rechnerherz.example.config.aop
 
-import com.google.common.base.Ascii
+import at.rechnerherz.example.util.truncate
 import com.google.common.base.MoreObjects
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.reflect.MethodSignature
@@ -97,7 +97,7 @@ fun cleanToString(
         else
             string
         if (truncate != null)
-            Ascii.truncate(firstLine, truncate, "...")
+            firstLine.truncate(truncate)
         else
             firstLine
     }
