@@ -17,6 +17,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
  * where the [Account.role] is the only authority granted to the [User],
  * and [User.enabled] is set to [Account.allowedToAuthenticate].
  *
+ * Setting any of the booleans ([User.enabled], [User.accountNonExpired], [User.credentialsNonExpired], [User.accountNonLocked])
+ * to `false` will throw an [org.springframework.security.authentication.AccountStatusException]
+ * that can be caught in [org.springframework.security.web.authentication.AuthenticationFailureHandler.onAuthenticationFailure].
+ *
  * [The UserDetailsService](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#tech-userdetailsservice)
  */
 class AccountUserDetailsService(
