@@ -7,8 +7,11 @@ import at.rechnerherz.example.util.appendPath
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.CacheControl
+import org.springframework.http.MediaType
+import org.springframework.web.accept.FixedContentNegotiationStrategy
 import org.springframework.web.filter.ForwardedHeaderFilter
 import org.springframework.web.servlet.LocaleResolver
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.i18n.CookieLocaleResolver
@@ -23,6 +26,15 @@ class WebConfig(
     private val baseProperties: BaseProperties,
     private val documentProperties: DocumentProperties
 ) : WebMvcConfigurer {
+
+    /**
+     * Always use "application/json" as media type
+     * instead of the doing content negotiation based on the "Accept"-header or the path.
+     */
+    override fun configureContentNegotiation(configurer: ContentNegotiationConfigurer) {
+        configurer
+            .strategies(listOf(FixedContentNegotiationStrategy(MediaType.APPLICATION_JSON)))
+    }
 
     /**
      * Add resource handlers to serve
