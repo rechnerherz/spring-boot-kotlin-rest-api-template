@@ -21,9 +21,9 @@ class AuthenticationRepositoryImpl(
         findByAuthentication(authentication())
 
     override fun findByAuthentication(authentication: Authentication?): Account? =
-        findByUsername(authentication?.name)
+        authentication?.let { findByUsername(it.name) }
 
-    override fun findByUsername(username: String?): Account? =
+    override fun findByUsername(username: String): Account? =
         entityManager.findBySimpleNaturalId(Account::class, username)
 
 }

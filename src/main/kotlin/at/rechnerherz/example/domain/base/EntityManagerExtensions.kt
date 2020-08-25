@@ -9,12 +9,10 @@ import kotlin.reflect.KClass
  *
  * [Natural Id API](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#naturalid-api)
  */
-fun <T : BaseEntity> EntityManager.findBySimpleNaturalId(entityClass: KClass<T>, simpleNaturalId: Any?): T? =
-    simpleNaturalId?.let {
-        unwrap(Session::class.java)
-            .bySimpleNaturalId(entityClass.java)
-            .load(it)
-    }
+fun <T : BaseEntity> EntityManager.findBySimpleNaturalId(entityClass: KClass<T>, simpleNaturalId: Any): T? =
+    unwrap(Session::class.java)
+        .bySimpleNaturalId(entityClass.java)
+        .load(simpleNaturalId)
 
 /**
  * Detach an entity, and retrieve the previous entity state from the database.

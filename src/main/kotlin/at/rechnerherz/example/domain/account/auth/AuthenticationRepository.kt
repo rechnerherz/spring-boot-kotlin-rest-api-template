@@ -23,5 +23,5 @@ interface AuthenticationRepository {
     /**
      * Fetch an account by username, using [org.hibernate.Session.bySimpleNaturalId].
      */
-    fun findByUsername(username: String?): Account?
+    fun findByUsername(username: String): Account?
 }
