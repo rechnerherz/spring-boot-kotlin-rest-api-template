@@ -153,6 +153,7 @@ class SecurityConfig(
     private fun HttpSecurity.enableCors(): HttpSecurity =
         cors().and()
 
+    //TODO: use Spring's default CSRF protection?
     /**
      * Enable CSRF protection with a client-side generated double submit cookie.
      *
