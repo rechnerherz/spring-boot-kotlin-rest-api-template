@@ -1,7 +1,7 @@
 package at.rechnerherz.example.web
 
 import at.rechnerherz.example.config.FAVICON
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody

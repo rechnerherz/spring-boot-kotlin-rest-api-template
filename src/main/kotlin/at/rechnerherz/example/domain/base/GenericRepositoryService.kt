@@ -1,6 +1,6 @@
 package at.rechnerherz.example.domain.base
 
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort

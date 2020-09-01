@@ -93,6 +93,10 @@ repositories {
 	// jcenter repository
 	// https://bintray.com/bintray/jcenter
 	jcenter()
+
+	// Local Maven repository (only used for testing locally published libraries; default location: USER_HOME/.m2/repository)
+	// https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:maven_local
+	//mavenLocal()
 }
 
 // Dependencies
@@ -131,6 +135,10 @@ dependencies {
 	// HAL Browser
 	// https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser
 	implementation("org.springframework.data:spring-data-rest-hal-browser")
+
+	// Aspect-oriented profiling
+	// https://github.com/darioseidl/aoprofiling-spring-boot-starter
+	implementation("at.rechnerherz:aoprofiling-spring-boot-starter:1.0.0-SNAPSHOT")
 
 	// JSR-354/JavaMoney/Moneta money and currency implementation
 	// http://javamoney.github.io/api.html

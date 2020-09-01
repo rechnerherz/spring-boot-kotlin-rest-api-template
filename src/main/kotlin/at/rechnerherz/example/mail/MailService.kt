@@ -1,6 +1,6 @@
 package at.rechnerherz.example.mail
 
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import at.rechnerherz.example.util.toFormattedPlainText
 import at.rechnerherz.example.util.wrapHTMLBody
 import mu.KotlinLogging

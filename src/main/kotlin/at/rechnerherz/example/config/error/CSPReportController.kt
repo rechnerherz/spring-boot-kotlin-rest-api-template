@@ -1,7 +1,7 @@
 package at.rechnerherz.example.config.error
 
 import at.rechnerherz.example.config.CSP_REPORT_URL
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import at.rechnerherz.example.util.prettyPrintJsonString
 import at.rechnerherz.example.util.readToString
 import mu.KotlinLogging

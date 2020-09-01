@@ -1,6 +1,6 @@
 package at.rechnerherz.example.thymeleaf
 
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
 import org.thymeleaf.context.Context

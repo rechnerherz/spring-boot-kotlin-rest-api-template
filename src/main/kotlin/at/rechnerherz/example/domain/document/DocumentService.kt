@@ -1,7 +1,7 @@
 package at.rechnerherz.example.domain.document
 
 import at.rechnerherz.example.config.DOCUMENTS_DIRECTORY
-import at.rechnerherz.example.config.aop.NoProfiling
+import at.rechnerherz.aoprofiling.NoProfiling
 import at.rechnerherz.example.domain.base.BaseProperties
 import at.rechnerherz.example.util.appendPath
 import at.rechnerherz.example.util.copyToResource
