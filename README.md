@@ -183,7 +183,7 @@ To check whether it was successfully installed in an NSS DB (Firefox/Chrome):
 
 To upgrade the Gradle wrapper use:
 
-    gradle wrapper --gradle-version=<version> --distribution-type=ALL
+    ./gradlew wrapper --gradle-version=<version> --distribution-type=ALL
 
 ## Native Memory Tracking
 
