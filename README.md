@@ -167,10 +167,11 @@ The certificate is signed by a local CA. The certificate was generated with:
 
 To install the CA, install [mkcert](https://github.com/FiloSottile/mkcert) and run:
 
-    cp example-api/src/main/resources/dev/rootCA.pem "$(mkcert -CAROOT)"
     export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
-    mkcert -install
+    CAROOT=./src/main/resources/dev/CAROOT/rootCA.pem mkcert -install
 
+Share the `rootCA.pem` with your team, but never share the `rootCA-key.pem` publicly.
+ 
 To check whether it was successfully installed in the Java trust store:
 
     keytool -cacerts -storepass changeit -list | grep mkcert
