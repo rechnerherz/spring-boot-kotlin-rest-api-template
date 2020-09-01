@@ -97,6 +97,9 @@ repositories {
 	// Local Maven repository (only used for testing locally published libraries; default location: USER_HOME/.m2/repository)
 	// https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:maven_local
 	//mavenLocal()
+
+	// Bintray Rechnerherz Maven repository (for aoprofiling-spring-boot-starter)
+	maven(url = "https://dl.bintray.com/rechnerherz/maven")
 }
 
 // Dependencies
@@ -137,8 +140,8 @@ dependencies {
 	implementation("org.springframework.data:spring-data-rest-hal-browser")
 
 	// Aspect-oriented profiling
-	// https://github.com/darioseidl/aoprofiling-spring-boot-starter
-	implementation("at.rechnerherz:aoprofiling-spring-boot-starter:1.0.0-SNAPSHOT")
+	// https://github.com/rechnerherz/aoprofiling-spring-boot-starter
+	implementation("at.rechnerherz:aoprofiling-spring-boot-starter:1.0.0")
 
 	// JSR-354/JavaMoney/Moneta money and currency implementation
 	// http://javamoney.github.io/api.html
