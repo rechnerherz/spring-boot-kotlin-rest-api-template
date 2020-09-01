@@ -14,7 +14,7 @@
   - Liquibase plugin to run Liquibase tasks (e.g. genarete DB diffs)
   - Asciidoctor plugin to generate documentaion
 
-- Peristence:
+- Persistence:
   - MariaDB 10.5
   - Hibernate 5.4
   - Hibernate Validator 6 to validate entities before persisting
