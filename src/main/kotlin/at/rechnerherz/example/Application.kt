@@ -13,7 +13,8 @@ import org.springframework.scheduling.annotation.EnableScheduling
  *
  * - [SpringBootApplication] enables auto-configuration and component scanning.
  *
- * - [ServletComponentScan] enables scanning for servlet components in embedded web servers.
+ * - [ServletComponentScan] enables scanning for servlet components in embedded web servers
+ *   (e.g. [javax.servlet.annotation.WebListener]s).
  *
  * - [ConfigurationPropertiesScan] enables scanning for configuration property components.
  *
