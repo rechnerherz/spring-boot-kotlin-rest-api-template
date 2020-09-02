@@ -97,9 +97,6 @@ repositories {
 	// Local Maven repository (only used for testing locally published libraries; default location: USER_HOME/.m2/repository)
 	// https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:maven_local
 	//mavenLocal()
-
-	// Bintray Rechnerherz Maven repository (for aoprofiling-spring-boot-starter)
-	maven(url = "https://dl.bintray.com/rechnerherz/maven")
 }
 
 // Dependencies
