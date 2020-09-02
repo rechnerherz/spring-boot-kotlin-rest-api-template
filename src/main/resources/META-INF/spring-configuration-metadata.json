@@ -57,11 +57,6 @@
       "name": "at.rechnerherz.example.mail",
       "type": "at.rechnerherz.example.mail.MailProperties",
       "sourceType": "at.rechnerherz.example.mail.MailProperties"
-    },
-    {
-      "name": "at.rechnerherz.example.profiling",
-      "type": "at.rechnerherz.example.config.aop.ProfilingProperties",
-      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties"
     }
   ],
   "properties": [
@@ -425,33 +420,6 @@
       "type": "java.time.Duration",
       "description": "Time to wait between sending mails.",
       "sourceType": "at.rechnerherz.example.mail.MailProperties"
-    },
-    {
-      "name": "at.rechnerherz.example.profiling.enabled",
-      "type": "java.lang.Boolean",
-      "description": "Set to true to enable method tracing.",
-      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "at.rechnerherz.example.profiling.ignore",
-      "type": "java.lang.String",
-      "description": "A comma-separated list of target.method names to ignore.",
-      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
-      "defaultValue": ""
-    },
-    {
-      "name": "at.rechnerherz.example.profiling.mode",
-      "type": "at.rechnerherz.example.config.aop.ProfilingProperties$Mode",
-      "description": "The display mode. TREE adds line drawings to the call tree, VERBOSE prints to multiple lines.",
-      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties"
-    },
-    {
-      "name": "at.rechnerherz.example.profiling.truncate",
-      "type": "java.lang.Integer",
-      "description": "Strings will be truncated to at most this number of characters, unless mode is VERBOSE.",
-      "sourceType": "at.rechnerherz.example.config.aop.ProfilingProperties",
-      "defaultValue": 100
     }
   ],
   "hints": []
