@@ -339,6 +339,12 @@ allOpen {
 	annotation("javax.persistence.Embeddable")
 }
 
+kapt {
+	// Show correct error types instead of NonExistingClass when processing annotations with kapt
+	// https://kotlinlang.org/docs/reference/kapt.html#non-existent-type-correction
+	correctErrorTypes = true
+}
+
 tasks.compileKotlin {
 	// Run compileKotlin task to generate configuration metadata
 	// Must depend on processResources to pick up additional metadata files
