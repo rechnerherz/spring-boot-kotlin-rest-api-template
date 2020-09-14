@@ -41,7 +41,7 @@ plugins {
 	// Dokka: Kotlin documentation engine
 	// https://github.com/Kotlin/dokka
 	// https://kotlinlang.org/docs/reference/kotlin-doc.html
-	id("org.jetbrains.dokka") version "1.4.0-rc"
+	id("org.jetbrains.dokka") version "1.4.0"
 
 	// Spring Boot plugin to run and package the application
 	// https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/
@@ -86,10 +86,6 @@ plugins {
 apply(plugin = "io.spring.dependency-management")
 
 repositories {
-	// gradle plugin portal need for dokka
-	// https://github.com/Kotlin/dokka
-	gradlePluginPortal()
-
 	// jcenter repository
 	// https://bintray.com/bintray/jcenter
 	jcenter()
