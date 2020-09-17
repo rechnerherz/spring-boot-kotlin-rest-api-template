@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.CacheControl
 import org.springframework.http.MediaType
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor
 import org.springframework.web.accept.FixedContentNegotiationStrategy
 import org.springframework.web.filter.ForwardedHeaderFilter
 import org.springframework.web.servlet.LocaleResolver
@@ -86,4 +87,14 @@ class WebConfig(
     fun forwardedHeaderFilter(): ForwardedHeaderFilter =
         ForwardedHeaderFilter()
 
+    /**
+     * Register a [MethodValidationPostProcessor] to do method-level validation
+     * of parameters and return values.
+     *
+     * The target class must be annotated with [org.springframework.validation.annotation.Validated]
+     * to be considered for validation.
+     */
+    @Bean
+    fun methodValidationPostProcessor(): MethodValidationPostProcessor =
+        MethodValidationPostProcessor()
 }
