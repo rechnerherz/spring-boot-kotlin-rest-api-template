@@ -178,16 +178,16 @@ class MailService(
             debugAddress.address
         } else address
 
-        return if (personal.isNullOrBlank())
+        return if (displayName.isNullOrBlank())
             InternetAddress(addressOrDebug)
         else
-            InternetAddress(addressOrDebug, personal)
+            InternetAddress(addressOrDebug, displayName)
     }
 }
 
 data class MailAddress(
     val address: String,
-    val personal: String? = null
+    val displayName: String? = null
 )
 
 data class MailAttachment(
