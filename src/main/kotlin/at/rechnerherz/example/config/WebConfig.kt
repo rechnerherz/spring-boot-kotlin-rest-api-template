@@ -29,12 +29,14 @@ class WebConfig(
 ) : WebMvcConfigurer {
 
     /**
-     * Always use "application/json" as media type
-     * instead of the doing content negotiation based on the "Accept"-header or the path.
+     * Don't do content negotiation based on the "Accept"-header or the path.
+     *
+     * Use `application/json` as default, but allow to produce any content type
+     * (to avoid "could not find acceptable representation" errors).
      */
     override fun configureContentNegotiation(configurer: ContentNegotiationConfigurer) {
         configurer
-            .strategies(listOf(FixedContentNegotiationStrategy(MediaType.APPLICATION_JSON)))
+            .strategies(listOf(FixedContentNegotiationStrategy(listOf(MediaType.APPLICATION_JSON, MediaType.ALL))))
     }
 
     /**
