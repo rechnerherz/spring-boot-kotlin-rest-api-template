@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration
 class TomcatConfig {
 
     /**
-     * Set `SameSite=none` on session cookie (`JSESSIONID`).
+     * Set `SameSite=none` on all cookies processed by Tomcat, including the session cookie (`JSESSIONID`).
      *
      * [Configure SameSite attribute on session Cookies](https://github.com/spring-projects/spring-boot/issues/15047)
      */
