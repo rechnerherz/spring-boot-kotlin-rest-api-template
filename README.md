@@ -3,7 +3,7 @@
 ## Stack/Features
 
 - Completely written in Kotlin, but can use Java too when necessary
-  - Language level and runtime JDK is 11 (for improved JVM memory handling in containers). 
+  - Language level and runtime JDK is 11 (for improved JVM memory handling in containers)
 
 - Spring Boot 2.3 / Spring Framework 5.3
 
@@ -98,8 +98,8 @@ Run with:
 
   - `./gradlew bootRun`, or
   - `./gradlew bootRun -Dremote-debug=true` to listen to remote debugging connection on default port `5005` 
-  - `./gradlew bootRun -Dspring.jpa.hibernate.ddl-auto=create` to create the database.
-  - `./gradlew localComposeUp dropCreateSchemas bootRun -Dspring.jpa.hibernate.ddl-auto=create` to drop and create the database.
+  - `./gradlew bootRun -Dspring.jpa.hibernate.ddl-auto=create` to drop and create the database with Hibernate.
+  - `./gradlew localComposeUp dropAll bootRun -Dspring.jpa.hibernate.ddl-auto=create-only` to drop the database with Liquibase and create the database with Hibernate.
 
 The application runs in an embedded Tomcat on `https://localhost:8443`.
 
