@@ -59,7 +59,7 @@ plugins {
 
 	// gradle-docker-compose plugin to run docker-compose with Gradle
 	// https://github.com/avast/gradle-docker-compose-plugin
-	id("com.avast.gradle.docker-compose") version "0.10.7"
+	id("com.avast.gradle.docker-compose") version "0.13.3"
 
 	// gradle-versions-plugin to check for dependency updates (./gradlew dependencyUpdates -Drevision=release)
 	// https://github.com/ben-manes/gradle-versions-plugin
