@@ -524,14 +524,14 @@ tasks.test {
 }
 
 // Add a task to run only unit tests
-tasks.create<Test>("unitTest") {
+tasks.register<Test>("unitTest") {
 	useJUnitPlatform {
 		includeTags("unit")
 	}
 }
 
 // Add a task to run only integration tests
-tasks.create<Test>("integrationTest") {
+tasks.register<Test>("integrationTest") {
 	useJUnitPlatform {
 		includeTags("integration")
 	}
