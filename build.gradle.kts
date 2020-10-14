@@ -422,15 +422,14 @@ tasks.register<Exec>("dropCreateSchemas") {
 	)
 }
 
-tasks.bootRun {
-
+fun runProperties(systemProperties: MutableMap<String, Any>) {
 	// Pass properties from command line to bootRun task
 	// https://stackoverflow.com/questions/25079244/how-to-pass-jvm-options-from-bootrun
 	System.getProperties()
-			// Don't set "endorsed dirs", unsupported since JDK9
-			// https://docs.oracle.com/javase/9/migrate/#GUID-D867DCCC-CEB5-4AFA-9D11-9C62B7A3FAB1
-			.filter { it.key != "java.endorsed.dirs" }
-			.forEach { (key, value) -> systemProperties[key.toString()] = value }
+		// Don't set "endorsed dirs", unsupported since JDK9
+		// https://docs.oracle.com/javase/9/migrate/#GUID-D867DCCC-CEB5-4AFA-9D11-9C62B7A3FAB1
+		.filter { it.key != "java.endorsed.dirs" }
+		.forEach { (key, value) -> systemProperties[key.toString()] = value }
 
 	// Completely disable the Spring Boot RestartClassLoader
 	// https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools-restart-disable
@@ -445,6 +444,11 @@ tasks.bootRun {
 	// Disable the Hypersistence Optimizer banner
 	// https://github.com/vladmihalcea/hibernate-types
 	systemProperties["hibernate.types.print.banner"] = "false"
+}
+
+tasks.bootRun {
+
+	runProperties(systemProperties)
 
 	val jvmArguments = mutableListOf<String>()
 
@@ -529,9 +533,11 @@ tasks.bootJar {
 
 // --- Test ---
 
-// Use JUnit5 when running tests with Gradle
-// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html
 tasks.test {
+	runProperties(systemProperties)
+
+	// Use JUnit5 when running tests with Gradle
+	// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html
 	useJUnitPlatform()
 }
 
