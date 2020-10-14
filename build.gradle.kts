@@ -410,6 +410,18 @@ dockerCompose {
 	}
 }
 
+// Create a task to drop and re-create DB schemas (just the schemas, not the tables)
+tasks.register<Exec>("dropCreateSchemas") {
+	commandLine(
+		"mysql",
+		"--protocol=TCP",
+		"--user=root",
+		"--password=root",
+		"--database=information_schema",
+		"--execute=;DROP SCHEMA IF EXISTS `example`;CREATE SCHEMA `example`;"
+	)
+}
+
 tasks.bootRun {
 
 	// Pass properties from command line to bootRun task
