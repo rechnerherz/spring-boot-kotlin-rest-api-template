@@ -12,14 +12,12 @@ plugins {
     // https://kotlinlang.org/docs/reference/using-gradle.html
     kotlin("jvm") version kotlinVersion
 
-    // Kotlin All-open and Spring compiler plugins to make classes open by default
+    // Kotlin Spring compiler plugin to make classes open by default (wraps the all-open plugin)
     // https://kotlinlang.org/docs/reference/compiler-plugins.html
-    kotlin("plugin.allopen") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
 
-    // Kotlin No-arg and JPA compiler plugins to generate zero-argument constructors
+    // Kotlin JPA compiler plugin to generate zero-argument constructors (wraps the no-arg plugin)
     // https://kotlinlang.org/docs/reference/compiler-plugins.html
-    kotlin("plugin.noarg") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
 
     // Kapt: Kotlin annotation processor
@@ -59,7 +57,7 @@ plugins {
 
     // gradle-docker-compose plugin to run docker-compose with Gradle
     // https://github.com/avast/gradle-docker-compose-plugin
-    id("com.avast.gradle.docker-compose") version "0.13.3"
+    id("com.avast.gradle.docker-compose") version "0.13.4"
 
     // gradle-versions-plugin to check for dependency updates (./gradlew dependencyUpdates -Drevision=release)
     // https://github.com/ben-manes/gradle-versions-plugin
@@ -151,7 +149,7 @@ dependencies {
 
     // Liquibase for database migrations
     // http://www.liquibase.org/
-    // https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-execute-liquibase-database-migrations-on-startup
+    // https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-execute-liquibase-database-migrations-on-startup
     implementation("org.liquibase:liquibase-core:3.10.2")
 
     // Jackson module to serialize/deserialize Kotlin classes
@@ -304,7 +302,7 @@ fun gitDescribe(): String {
 }
 
 // Set group identifier
-group = "eu.mediprime"
+group = "at.rechnerherz"
 
 // Set the project version with grgit (unless exit-after-startup is set)
 version = if (System.getProperties()["at.rechnerherz.example.base.exit-after-startup"] == "true") "" else gitDescribe()
@@ -318,12 +316,19 @@ springBoot {
 
 // --- Compile Java ---
 
-// Java source/target compatibility
-// https://docs.gradle.org/current/userguide/java_plugin.html#other_convention_properties
-
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    // Java source/target compatibility
+    // https://docs.gradle.org/current/userguide/java_plugin.html#other_convention_properties
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<JavaCompile> {
+    // Enable unchecked call/conversion warnings and deprecation warnings
+    // https://docs.oracle.com/javase/tutorial/java/generics/rawTypes.html
+    // https://docs.oracle.com/javase/10/core/enhanced-deprecation1.htm
+    // Note: -parameters is enabled by default by Spring Boot
+    options.compilerArgs.addAll(listOf("-Xlint:unchecked", "-Xlint:deprecation"))
 }
 
 // --- Compile Kotlin ---
@@ -400,14 +405,6 @@ dockerCompose {
         isRequiredBy(tasks.test.get())
     }
 
-    // Create portainerComposeUp task to start portainer
-    createNested("portainer").apply {
-        projectName = "example-local"
-        useComposeFiles = listOf("./docker/portainer-docker-compose.yml")
-
-        // Don"t stop containers, try to reconnect instead
-        stopContainers = false
-    }
 }
 
 // Create a task to drop and re-create DB schemas (just the schemas, not the tables)
@@ -592,12 +589,17 @@ tasks.jacocoTestReport {
 
 // --- Documentation ---
 
-// https://github.com/asciidoctor/asciidoctor-gradle-plugin#using-asciidoctorj-diagram
 asciidoctorj {
+    // Don't show project version number on generated documentation
+    attributes(mapOf("revnumber" to ""))
+
+    // Set Diagram Version
+    // https://github.com/asciidoctor/asciidoctor-gradle-plugin#using-asciidoctorj-diagram
     modules.diagram.setVersion("1.5.4.1")
 }
 
-// https://github.com/asciidoctor/asciidoctor-gradle-plugin#the-new-asciidoctorj-plugin
 tasks.asciidoctor {
+    // Set documentation source location
+    // https://github.com/asciidoctor/asciidoctor-gradle-plugin#the-new-asciidoctorj-plugin
     setSourceDir(file("doc"))
 }
