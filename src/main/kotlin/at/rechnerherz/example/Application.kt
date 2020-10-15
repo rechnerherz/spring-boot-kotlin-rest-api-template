@@ -32,13 +32,13 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @EnableScheduling
 class Application {
 
-	companion object {
+    companion object {
 
-		/** Entry point, run with gradle `bootRun` task. */
-		@JvmStatic
-		fun main(args: Array<String>) {
-			SpringApplication.run(Application::class.java, *args)
-		}
+        /** Entry point, run with gradle `bootRun` task. */
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(Application::class.java, *args)
+        }
 
-	}
+    }
 }
