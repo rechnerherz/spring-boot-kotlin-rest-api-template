@@ -84,9 +84,9 @@ plugins {
 apply(plugin = "io.spring.dependency-management")
 
 repositories {
-    // jcenter repository
-    // https://bintray.com/bintray/jcenter
-    jcenter()
+    // Maven Central repository
+    // https://central.sonatype.org/
+    mavenCentral()
 
     // Local Maven repository (only used for testing locally published libraries; default location: USER_HOME/.m2/repository)
     // https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:maven_local
